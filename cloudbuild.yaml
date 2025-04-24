@@ -1,0 +1,22 @@
+steps:
+  # Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/my-simple-app:$BUILD_ID', '.']
+
+  # Push the container image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/my-simple-app:$BUILD_ID']
+
+  # Deploy the image to Cloud Run
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: [
+      'run',
+      'deploy',
+      'my-simple-app-cloud-run',
+      '--image', 'gcr.io/$PROJECT_ID/my-simple-app:$BUILD_ID',
+      '--region', 'southwest1',
+      '--platform', 'managed',
+      '--allow-unauthenticated' # Optional: If you want to allow public access
+    ]
+
+images: ['gcr.io/$PROJECT_ID/my-simple-app:$BUILD_ID']

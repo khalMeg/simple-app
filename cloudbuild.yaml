@@ -18,5 +18,6 @@ steps:
       '--platform', 'managed',
       '--allow-unauthenticated' # Optional: If you want to allow public access
     ]
-
+options:
+  logging: CLOUD_LOGGING_ONLY
 images: ['gcr.io/$PROJECT_ID/my-simple-app:$COMMIT_SHA']

@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template_string
 
 app = Flask(__name__)
@@ -9,7 +10,7 @@ HTML_TEMPLATE = """
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Greeting</title>
+    <title>Hello World</title>
     <style>
         body {
             display: flex;
@@ -27,14 +28,15 @@ HTML_TEMPLATE = """
     </style>
 </head>
 <body>
-    <h1>Hi this is Khalil!</h1>
+    <h1>Hello, This is Khalil!</h1>
 </body>
 </html>
 """
 
 @app.route('/')
-def home():
+def hello_world():
     return render_template_string(HTML_TEMPLATE)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 8080))
+    app.run(debug=True, host='0.0.0.0', port=port)

@@ -14,7 +14,7 @@ steps:
       'deploy',
       'my-simple-app-cloud-run',
       '--image', 'gcr.io/$PROJECT_ID/my-simple-app:$COMMIT_SHA',
-      '--region', 'southwest1',
+      '--region', 'europe-west1',
       '--platform', 'managed',
       '--allow-unauthenticated' # Optional: If you want to allow public access
     ]

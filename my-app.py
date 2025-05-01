@@ -28,7 +28,7 @@ HTML_TEMPLATE = """
     </style>
 </head>
 <body>
-    <h1>Hello, This is Khalil!</h1>
+    <h1>Hello from Cloud Run !</h1>
 </body>
 </html>
 """
